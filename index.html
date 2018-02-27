@@ -31,12 +31,18 @@
                     <input id="good" type="radio" name="moviesRate" value="Good"><label>Good Movies</label>
                 </div>
                 <div>
-                    <label for="yearStart">Movies From </label>
+                    <label>Movies From </label>
                     <input id="yearStart" name="yearStart" type="number" placeholder="1950" min="1950" max="2020" step="10">
-                    <label for="yearStart">To </label>
+                    <label>To </label>
                     <input id="yearEnd" name="yearEnd" type="number" placeholder="2020" min="1950" max="2020" step="10">
                     <input id="searchField" name="searchText" placeholder="Search By Movie Name">
                     <button type="submit" id="search">Search Movies</button>
+                </div>
+                <div>
+                    <label>Sort Movies By </label>
+                    <input id="byName" type="radio" name="sort" value="byName" checked><label>Name</label>
+                    <input id="byRating" type="radio" name="sort" value="byRating"><label>Rating</label>
+                    <input id="byYear" type="radio" name="sort" value="byYear"><label>Year</label>
                 </div>
             </form>
         </section>

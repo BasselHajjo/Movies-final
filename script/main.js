@@ -31,6 +31,7 @@ fetchJSONDataNew(moviesURL).then(movies => {
         const formTag = formData.get('moviesRate');
         const formYearStart = formData.get('yearStart');
         const formYearEnd = formData.get('yearEnd');
+        const formSort = formData.get('sort');
         
         let filteredMovies = taggedMovies.filter(x => x.title.toLocaleLowerCase().includes(formText));
         
@@ -42,6 +43,16 @@ fetchJSONDataNew(moviesURL).then(movies => {
         
         if(formYearStart >= 1950 && formYearEnd <= 2020){
             filteredMovies = filteredMovies.filter(x => x.year >= formYearStart && x.year <= formYearEnd);
+        }
+        
+        /*allow the user to sort the movies by: Name, Rating or Year*/
+        
+        if(formSort !== 'byName'){
+            if(formSort === 'byRating'){
+                filteredMovies.sort(x => x.rating)
+            }else{
+                filteredMovies.sort(x => x.year)
+            }
         }
         
         renderMovies(filteredMovies);

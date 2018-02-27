@@ -29,11 +29,19 @@ fetchJSONDataNew(moviesURL).then(movies => {
         const formData = new FormData(form);
         const formText = formData.get('searchText').toLocaleLowerCase();
         const formTag = formData.get('moviesRate');
+        const formYearStart = formData.get('yearStart');
+        const formYearEnd = formData.get('yearEnd');
         
         let filteredMovies = taggedMovies.filter(x => x.title.toLocaleLowerCase().includes(formText));
         
         if(formTag !== 'All'){
             filteredMovies = filteredMovies.filter(x => x.tag === formTag);
+        }
+        
+        /*Create a way to select movies by decade */
+        
+        if(formYearStart >= 1950 && formYearEnd <= 2020){
+            filteredMovies = filteredMovies.filter(x => x.year >= formYearStart && x.year <= formYearEnd);
         }
         
         renderMovies(filteredMovies);

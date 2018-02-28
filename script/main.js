@@ -49,9 +49,9 @@ fetchJSONDataNew(moviesURL).then(movies => {
         
         if(formSort !== 'byName'){
             if(formSort === 'byRating'){
-                filteredMovies.sort(x => x.rating)
+                filteredMovies.sort((x,y) => (y.rating - x.rating))
             }else{
-                filteredMovies.sort(x => x.year)
+                filteredMovies.sort((x,y) => (y.year - x.year))
             }
         }
         
